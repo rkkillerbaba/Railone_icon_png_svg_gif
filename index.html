@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>RailOne - Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B2A6E;
+    --caption:#3F51B5;
+    --blue:#1877F2;
+    --red:#F53F3F;
+    --green:#7CE87C;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{
+    font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    background:#e9edf5;
+    color:var(--navy);
+  }
+  .phone{
+    max-width:430px;
+    margin:0 auto;
+    background:#fff;
+    min-height:100vh;
+    position:relative;
+    padding-bottom:90px;
+    box-shadow:0 0 24px rgba(0,0,0,.12);
+  }
+
+  /* ===== Header ===== */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:#fff;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 16px;
+    border-bottom:1px solid #f0f1f5;
+  }
+  .lang-btn{
+    width:46px;height:46px;border-radius:50%;
+    border:1.5px solid #e3e6ef;background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;color:var(--blue);font-size:15px;line-height:1;
+    cursor:pointer;flex-shrink:0;
+  }
+  .lang-btn span{font-size:19px;}
+  .lang-btn .en{margin-right:2px;}
+  .lang-btn .hi{font-size:14px;opacity:.9;}
+  .logo{
+    font-size:30px;font-weight:600;color:#1c1c1c;letter-spacing:.5px;
+    font-family:'Poppins',sans-serif;position:relative;
+  }
+  .logo .dot-i{position:relative;}
+  .logo .dot-i::after{
+    content:"";position:absolute;top:-2px;left:52%;
+    width:7px;height:7px;border-radius:50%;background:#F26522;
+  }
+  .bell{position:relative;width:46px;height:46px;flex-shrink:0;cursor:pointer;}
+  .bell img{width:100%;height:100%;object-fit:contain;}
+  .bell .badge{
+    position:absolute;top:-2px;right:-2px;
+    background:var(--red);color:#fff;font-size:12px;font-weight:600;
+    min-width:20px;height:20px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;padding:0 5px;
+    border:2px solid #fff;
+  }
+  /* ===== Sections ===== */
+  section{padding:14px 16px 4px;}
+  h2.greet{font-size:19px;font-weight:600;margin-bottom:2px;}
+  h2.section-title{font-size:23px;font-weight:700;color:var(--navy);margin:14px 0 12px;}
+
+  /* ===== Journey Planner ===== */
+  .journey-row{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+  }
+  .j-card{text-align:center;cursor:pointer;}
+  .j-card img{
+    width:100%;border-radius:14px;display:block;
+    aspect-ratio:1/0.92;object-fit:cover;background:#f4f6fb;
+  }
+  .j-card p{margin-top:6px;font-size:16px;font-weight:500;color:var(--navy);}
+
+  /* ===== More Offerings ===== */
+  .offer-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:12px 8px;
+  }
+  .offer{text-align:center;cursor:pointer;}
+  .offer .tile{
+    width:100%;aspect-ratio:1/0.92;border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .offer .tile img{width:52%;height:52%;object-fit:contain;}
+  .offer p{
+    margin-top:7px;font-size:13.5px;font-weight:500;line-height:1.25;color:var(--navy);
+  }
+  .tile.pink{background:#FDE7F0;}
+  .tile.green{background:#E2F6E8;}
+  .tile.sky{background:#DFF3FD;}
+  .tile.cream{background:#FCF3DD;}
+  .tile.lilac{background:#E7E7FB;}
+  .tile.grey{background:#ECECEC;}
+  .tile.rose{background:#FBE3E3;}
+  .tile.waves{background:#5D6179;}
+
+  /* ===== Upcoming Journey ===== */
+  .ticket{
+    position:relative;
+    background:linear-gradient(105deg,#7B6CF6 0%,#9A6DF0 45%,#C86DD7 100%);
+    border-radius:22px;color:#fff;
+    padding:26px 24px;margin:4px 2px 18px;
+    overflow:visible;
+  }
+  .ticket .notch{
+    position:absolute;width:26px;height:26px;border-radius:50%;background:#fff;
+  }
+  .ticket .notch.top{top:-13px;left:66%;}
+  .ticket .notch.bottom{bottom:-13px;left:48%;}
+  .ticket .date{font-size:19px;font-weight:600;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.45);}
+  .ticket .route{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 0;border-bottom:1px solid rgba(255,255,255,.45);
+    font-size:16.5px;font-weight:500;letter-spacing:.4px;
+  }
+  .ticket .actions{
+    display:flex;align-items:center;gap:12px;padding-top:14px;flex-wrap:wrap;
+  }
+  .ticket .actions .type{font-size:17px;font-weight:700;color:var(--green);margin-right:auto;}
+  .ticket .actions .pill{
+    border:1.5px solid #fff;border-radius:20px;
+    padding:8px 18px;font-size:15px;font-weight:500;color:#fff;
+    background:transparent;cursor:pointer;white-space:nowrap;
+  }
+
+  /* ===== Do You Know ===== */
+  .know-scroll{
+    display:flex;gap:16px;
+    overflow-x:auto;scroll-snap-type:x mandatory;
+    padding:2px 16px 10px;margin:0 -16px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .know-scroll::-webkit-scrollbar{display:none;}
+  .know-card{
+    flex:0 0 78%;max-width:330px;scroll-snap-align:start;cursor:pointer;
+  }
+  .know-card img{
+    width:100%;height:250px;object-fit:cover;border-radius:18px;display:block;
+    background:#eef1f8;
+  }
+  .know-card p{
+    margin-top:12px;font-size:18px;font-weight:500;line-height:1.45;color:var(--caption);
+  }
+
+  /* ===== Social ===== */
+  .social-banner{
+    position:relative;border-radius:18px;overflow:hidden;
+    margin:4px 2px 26px;
+  }
+  .social-banner img.bg{width:100%;display:block;}
+  .social-icons{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;gap:26px;
+  }
+  .social-icons a{
+    width:58px;height:58px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    text-decoration:none;transition:transform .15s;
+  }
+  .social-icons a:hover{transform:scale(1.08);}
+  .s-x{background:#000;}
+  .s-fb{background:#1877F2;}
+  .s-ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%);}
+  .s-yt{background:#FF0000;border-radius:18px !important;width:74px !important;height:52px !important;}
+  .social-icons svg{width:30px;height:30px;fill:#fff;}
+  .s-yt svg{width:34px;height:26px;}
+
+  /* ===== Bottom Nav ===== */
+  nav.bottom{
+    position:fixed;bottom:0;left:0;right:0;z-index:60;
+    background:var(--blue);
+  }
+  nav.bottom .inner{
+    max-width:430px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(4,1fr);
+    padding:8px 4px 10px;
+  }
+  nav.bottom a{
+    display:flex;flex-direction:column;align-items:center;gap:3px;
+    text-decoration:none;color:rgba(255,255,255,.75);
+    font-size:14.5px;font-weight:500;
+  }
+  nav.bottom a.active{color:#fff;}
+  nav.bottom svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+</style>
+</head>
+<body>
+<div class="phone">
+  <!-- ============ Header ============ -->
+  <header>
+    <div class="lang-btn" title="Language">
+      <span class="en">A</span><span class="hi">अ</span>
+    </div>
+    <div class="logo">Ra<span class="dot-i">i</span>lOne</div>
+    <div class="bell" title="Notifications">
+      <img src="images/bell_notification.png" alt="Notifications" />
+      <span class="badge">5</span>
+    </div>
+  </header>
+
+  <!-- ============ Greeting ============ -->
+  <section>
+    <h2 class="greet">Hi, Rishi!</h2>
+
+    <!-- Journey Planner -->
+    <h2 class="section-title">Journey Planner</h2>
+    <div class="journey-row">
+      <div class="j-card">
+        <img src="images/reserve_card.png" alt="Reserved" />
+        <p>Reserved</p>
+      </div>
+      <div class="j-card">
+        <img src="images/unreserve_card.png" alt="Unreserved" />
+        <p>Unreserved</p>
+      </div>
+      <div class="j-card">
+        <img src="images/platform_card.png" alt="Platform" />
+        <p>Platform</p>
+      </div>
+    </div>
+
+    <!-- More Offerings -->
+    <h2 class="section-title">More Offerings</h2>
+    <div class="offer-grid">
+      <div class="offer">
+        <div class="tile pink"><img src="images/search_train_route.png" alt="" /></div>
+        <p>Search<br />Trains</p>
+      </div>
+      <div class="offer">
+        <div class="tile green"><img src="images/enquire_pnr_icon.png" alt="" /></div>
+        <p>PNR<br />Status</p>
+      </div>
+      <div class="offer">
+        <div class="tile sky"><img src="images/enquire_coach_position.png" alt="" /></div>
+        <p>Coach<br />Position</p>
+      </div>
+      <div class="offer">
+        <div class="tile cream"><img src="images/enquire_spot_your_train.png" alt="" /></div>
+        <p>Track Your<br />Train</p>
+      </div>
+      <div class="offer">
+        <div class="tile lilac"><img src="images/more_order_food.png" alt="" /></div>
+        <p>Order<br />Food</p>
+      </div>
+      <div class="offer">
+        <div class="tile grey"><img src="images/goods_refund.png" alt="" /></div>
+        <p>File<br />Refund</p>
+      </div>
+      <div class="offer">
+        <div class="tile rose"><img src="images/train_complaint_icon.png" alt="" /></div>
+        <p>Rail<br />Madad</p>
+      </div>
+      <div class="offer">
+        <div class="tile waves"><img src="images/waves.png" alt="" /></div>
+        <p>Go To<br />WAVES</p>
+      </div>
+    </div>
+    <!-- Upcoming Journey -->
+    <h2 class="section-title">Upcoming Journey</h2>
+    <div class="ticket">
+      <span class="notch top"></span>
+      <span class="notch bottom"></span>
+      <div class="date">Wed, 7 Oct 26</div>
+      <div class="route">
+        <span>SHRIDHAM</span>
+        <span>JABALPUR</span>
+      </div>
+      <div class="actions">
+        <span class="type">Unreserved</span>
+        <button class="pill">Book Again</button>
+        <button class="pill">View Details</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Do You Know ============ -->
+  <section>
+    <h2 class="section-title">Do You know?</h2>
+    <div class="know-scroll">
+      <div class="know-card">
+        <img src="images/first_ever_train.png" alt="First passenger train" />
+        <p>First ever passenger train was run between Bori Bandar to Thane on April 16, 1853.</p>
+      </div>
+      <div class="know-card">
+        <img src="images/chenab.jpg" alt="Chenab Bridge" />
+        <p>Chenab Railway Bridge in Dharot, Jammu &amp; Kashmir is the World's highest Railway Bridge.</p>
+      </div>
+      <div class="know-card">
+        <img src="images/noney_bridge.webp" alt="Noney Bridge" />
+        <p>Noney Bridge is going to be world's tallest railway bridge pier at a height of 141 meters.</p>
+      </div>
+      <div class="know-card">
+        <img src="images/hubbulli_railway.png" alt="Hubballi Railway Station" />
+        <p>Shree Siddharoodha Swamiji Railway Station Hubballi is world's longest Railway Platform with length of 1505 meters.</p>
+      </div>
+      <div class="know-card">
+        <img src="images/electric.jpeg" alt="Electrified tracks" />
+        <p>99% Electrification is achieved in Indian Railways.</p>
+      </div>
+    </div>
+  </section>
+  <!-- ============ Social Media ============ -->
+  <section>
+    <h2 class="section-title">Follow Us On Social Media Platforms</h2>
+    <div class="social-banner">
+      <img class="bg" src="images/social_media_background.png" alt="Train at sunset" />
+      <div class="social-icons">
+        <a class="s-x" href="#" aria-label="X">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a class="s-fb" href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M13.5 21.5v-8.2h2.75l.41-3.19H13.5V8.08c0-.92.26-1.55 1.59-1.55h1.69V3.67c-.29-.04-1.3-.13-2.47-.13-2.44 0-4.11 1.49-4.11 4.23v2.35H7.43v3.19h2.77v8.2h3.3z"/></svg>
+        </a>
+        <a class="s-ig" href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="4.2"/>
+            <circle cx="17.2" cy="6.8" r="1.2" fill="#fff" stroke="none"/>
+          </svg>
+        </a>
+        <a class="s-yt" href="#" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Bottom Nav ============ -->
+  <nav class="bottom">
+    <div class="inner">
+      <a href="#" class="active">
+        <svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5"/><path d="M10 21v-6h4v6"/></svg>
+        Home
+      </a>
+      <a href="#">
+        <svg viewBox="0 0 24 24"><path d="M4 7a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v3a2 2 0 0 0 0 4v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a2 2 0 0 0 0-4V7z"/><path d="M13 6v2.5M13 11v2.5M13 15.5V18"/></svg>
+        My Bookings
+      </a>
+      <a href="#">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 21c.8-4 3.9-6 7.5-6s6.7 2 7.5 6"/></svg>
+        You
+      </a>
+      <a href="#">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        Menu
+      </a>
+    </div>
+  </nav>
+
+
+
+</div>
+</body>
+</html>
